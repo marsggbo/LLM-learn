@@ -102,7 +102,8 @@ def main(argv=None):
     config_ours["n_embed"] = config_ours.pop("n_embd")
     logger.info(f"Model hyperparameters: {config_ours}")
 
-    model_ours = GPT2(**config_ours)
+    model_ours = GPT2(**config_ours) # from hyperbox
+    model_ours = GPT(**config_ours) # from LLM-learn/pytorch_gpt
     model_ours.eval()
 
     print(sum(p.numel() for p in model_ours.parameters()))
